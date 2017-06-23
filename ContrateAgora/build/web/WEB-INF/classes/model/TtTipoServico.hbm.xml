@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/06/2017 19:29:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TtTipoServico" table="tt_tipo_servico" catalog="contrate_agora" optimistic-lock="version">
+        <id name="idtTipoServico" type="java.lang.Integer">
+            <column name="idt_tipo_servico" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="ttCategoriaServico" class="model.TtCategoriaServico" fetch="select">
+            <column name="cod_categoria_servico" not-null="true" />
+        </many-to-one>
+        <property name="nmeTipoServico" type="string">
+            <column name="nme_tipo_servico" not-null="true" />
+        </property>
+        <set name="tbServicos" table="tb_servico" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_tipo_servico" not-null="true" />
+            </key>
+            <one-to-many class="model.TbServico" />
+        </set>
+    </class>
+</hibernate-mapping>

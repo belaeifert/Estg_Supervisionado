@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/06/2017 19:29:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TaMensagem" table="ta_mensagem" catalog="contrate_agora" optimistic-lock="version">
+        <id name="idtMensagem" type="java.lang.Integer">
+            <column name="idt_mensagem" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tbPrestador" class="model.TbPrestador" fetch="select">
+            <column name="cod_prestador" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbUsuario" class="model.TbUsuario" fetch="select">
+            <column name="cod_usuario" not-null="true" />
+        </many-to-one>
+        <property name="mensagens" type="string">
+            <column name="mensagens" length="45" not-null="true" />
+        </property>
+        <property name="dataHoraMensagem" type="string">
+            <column name="data_hora_mensagem" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

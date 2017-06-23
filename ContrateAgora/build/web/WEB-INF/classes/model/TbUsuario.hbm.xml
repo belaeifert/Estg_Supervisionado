@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/06/2017 19:29:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TbUsuario" table="tb_usuario" catalog="contrate_agora" optimistic-lock="version">
+        <id name="idtUsuario" type="int">
+            <column name="idt_usuario" />
+            <generator class="assigned" />
+        </id>
+        <property name="nmeUsuario" type="string">
+            <column name="nme_usuario" not-null="true" />
+        </property>
+        <property name="emailUsuario" type="string">
+            <column name="email_usuario" length="45" not-null="true" />
+        </property>
+        <property name="senhaUsuario" type="string">
+            <column name="senha_usuario" length="45" not-null="true" />
+        </property>
+        <property name="telUsuario" type="int">
+            <column name="tel_usuario" not-null="true" />
+        </property>
+        <property name="cepUsuario" type="int">
+            <column name="cep_usuario" not-null="true" />
+        </property>
+        <property name="enderecoUsuario" type="string">
+            <column name="endereco_usuario" not-null="true" />
+        </property>
+        <property name="complementoEnderecoUsuario" type="string">
+            <column name="complemento_endereco_usuario" not-null="true" />
+        </property>
+        <property name="numEnderecoUsuario" type="string">
+            <column name="num_endereco_usuario" length="45" not-null="true" />
+        </property>
+        <property name="tipoUsuario" type="string">
+            <column name="tipo_usuario" length="3" not-null="true" />
+        </property>
+        <set name="tbPrestadors" table="tb_prestador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_usuario" not-null="true" />
+            </key>
+            <one-to-many class="model.TbPrestador" />
+        </set>
+        <set name="taServicoPrestados" table="ta_servico_prestado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_usuario" not-null="true" />
+            </key>
+            <one-to-many class="model.TaServicoPrestado" />
+        </set>
+        <set name="taMensagems" table="ta_mensagem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_usuario" not-null="true" />
+            </key>
+            <one-to-many class="model.TaMensagem" />
+        </set>
+    </class>
+</hibernate-mapping>

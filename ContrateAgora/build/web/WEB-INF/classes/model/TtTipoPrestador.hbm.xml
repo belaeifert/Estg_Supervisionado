@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/06/2017 19:29:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TtTipoPrestador" table="tt_tipo_prestador" catalog="contrate_agora" optimistic-lock="version">
+        <id name="idtTipoPrestador" type="java.lang.Integer">
+            <column name="idt_tipo_prestador" />
+            <generator class="identity" />
+        </id>
+        <property name="tipoPrestador" type="string">
+            <column name="tipo_prestador" length="45" not-null="true" />
+        </property>
+        <set name="tbPrestadors" table="tb_prestador" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_tipo_prestador" not-null="true" />
+            </key>
+            <one-to-many class="model.TbPrestador" />
+        </set>
+    </class>
+</hibernate-mapping>

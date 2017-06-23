@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/06/2017 19:29:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TtPagamento" table="tt_pagamento" catalog="contrate_agora" optimistic-lock="version">
+        <id name="idtPagamento" type="java.lang.Integer">
+            <column name="idt_pagamento" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="ttAssinatura" class="model.TtAssinatura" fetch="select">
+            <column name="cod_assinatura" not-null="true" />
+        </many-to-one>
+        <property name="periodoPagamento" type="string">
+            <column name="periodo_pagamento" length="2" not-null="true" />
+        </property>
+        <property name="vlrPagamento" type="big_decimal">
+            <column name="vlr_pagamento" precision="3" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

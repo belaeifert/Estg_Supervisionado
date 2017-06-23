@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/06/2017 19:29:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TbServico" table="tb_servico" catalog="contrate_agora" optimistic-lock="version">
+        <id name="idtServi&#231;o" type="java.lang.Integer">
+            <column name="idt_servi&#231;o" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tbPrestador" class="model.TbPrestador" fetch="select">
+            <column name="cod_prestador" not-null="true" />
+        </many-to-one>
+        <many-to-one name="ttTipoServico" class="model.TtTipoServico" fetch="select">
+            <column name="cod_tipo_servico" not-null="true" />
+        </many-to-one>
+        <property name="nmeServico" type="string">
+            <column name="nme_servico" not-null="true" />
+        </property>
+        <property name="precoServico" type="big_decimal">
+            <column name="preco_servico" precision="3" not-null="true" />
+        </property>
+        <property name="descricaoServico" type="string">
+            <column name="descricao_servico" not-null="true" />
+        </property>
+        <property name="foto" type="string">
+            <column name="foto" length="45" not-null="true" />
+        </property>
+        <set name="ttAgendas" table="tt_agenda" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_servi&#231;o" not-null="true" />
+            </key>
+            <one-to-many class="model.TtAgenda" />
+        </set>
+        <set name="taServicoPrestados" table="ta_servico_prestado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_servi&#231;o" not-null="true" />
+            </key>
+            <one-to-many class="model.TaServicoPrestado" />
+        </set>
+    </class>
+</hibernate-mapping>

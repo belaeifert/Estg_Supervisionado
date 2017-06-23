@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/06/2017 19:29:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TaServicoPrestado" table="ta_servico_prestado" catalog="contrate_agora" optimistic-lock="version">
+        <id name="idtServicoPrestado" type="java.lang.Integer">
+            <column name="idt_servico_prestado" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tbServico" class="model.TbServico" fetch="select">
+            <column name="cod_servi&#231;o" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbUsuario" class="model.TbUsuario" fetch="select">
+            <column name="cod_usuario" not-null="true" />
+        </many-to-one>
+        <property name="horaServicoPrestado" type="string">
+            <column name="hora_servico_prestado" length="9" not-null="true" />
+        </property>
+        <property name="favoritoServicoPrestado" type="java.lang.Byte">
+            <column name="favorito_servico_prestado" />
+        </property>
+        <property name="cepServicoPrestado" type="java.lang.Integer">
+            <column name="cep_servico_prestado" />
+        </property>
+        <property name="enderecoServicoPrestado" type="string">
+            <column name="endereco_servico_prestado" />
+        </property>
+        <property name="complementoServicoPrestado" type="string">
+            <column name="complemento_servico_prestado" length="50" />
+        </property>
+        <property name="numero" type="string">
+            <column name="numero" length="45" />
+        </property>
+        <property name="msgRecomendacao" type="string">
+            <column name="msg_recomendacao" />
+        </property>
+        <property name="dtHrRecomendacao" type="string">
+            <column name="dt_hr_recomendacao" length="19" />
+        </property>
+        <property name="notaRecomendacao" type="java.lang.Double">
+            <column name="nota_recomendacao" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

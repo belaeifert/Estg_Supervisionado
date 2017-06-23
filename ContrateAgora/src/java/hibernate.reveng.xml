@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="contrate_agora"/>
+  <table-filter match-name="tt_pagamento"/>
+  <table-filter match-name="ta_servico_prestado"/>
+  <table-filter match-name="tt_agenda"/>
+  <table-filter match-name="tt_tipo_pagamento"/>
+  <table-filter match-name="tt_tipo_servico"/>
+  <table-filter match-name="tt_assinatura"/>
+  <table-filter match-name="tt_categoria_servico"/>
+  <table-filter match-name="tb_servico"/>
+  <table-filter match-name="tt_tipo_prestador"/>
+  <table-filter match-name="ta_mensagem"/>
+  <table-filter match-name="tb_prestador"/>
+  <table-filter match-name="tb_usuario"/>
+</hibernate-reverse-engineering>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/06/2017 19:29:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TtAgenda" table="tt_agenda" catalog="contrate_agora" optimistic-lock="version">
+        <id name="idtAgenda" type="java.lang.Integer">
+            <column name="idt_agenda" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tbServico" class="model.TbServico" fetch="select">
+            <column name="cod_servi&#231;o" not-null="true" />
+        </many-to-one>
+        <property name="disponibilidadeAgenda" type="string">
+            <column name="disponibilidade_agenda" length="4" not-null="true" />
+        </property>
+        <property name="horaAgenda" type="time">
+            <column name="hora_agenda" length="8" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/06/2017 19:29:58 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.TbPrestador" table="tb_prestador" catalog="contrate_agora" optimistic-lock="version">
+        <id name="idtPrestador" type="java.lang.Integer">
+            <column name="idt_prestador" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tbUsuario" class="model.TbUsuario" fetch="select">
+            <column name="cod_usuario" not-null="true" />
+        </many-to-one>
+        <many-to-one name="ttTipoPrestador" class="model.TtTipoPrestador" fetch="select">
+            <column name="cod_tipo_prestador" not-null="true" />
+        </many-to-one>
+        <property name="enderecoEmpresa" type="string">
+            <column name="endereco_empresa" not-null="true" />
+        </property>
+        <property name="telComercialPrestador" type="int">
+            <column name="tel_comercial_prestador" not-null="true" />
+        </property>
+        <property name="tipoPrestador" type="string">
+            <column name="tipo_prestador" length="3" not-null="true" />
+        </property>
+        <property name="cpfPrestador" type="java.lang.Integer">
+            <column name="cpf_prestador" />
+        </property>
+        <property name="cnpjPrestador" type="java.lang.Integer">
+            <column name="cnpj_prestador" />
+        </property>
+        <property name="nmeFantasiaPrestador" type="string">
+            <column name="nme_fantasia_prestador" />
+        </property>
+        <set name="tbServicos" table="tb_servico" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_prestador" not-null="true" />
+            </key>
+            <one-to-many class="model.TbServico" />
+        </set>
+        <set name="ttTipoPagamentos" table="tt_tipo_pagamento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_prestador" not-null="true" />
+            </key>
+            <one-to-many class="model.TtTipoPagamento" />
+        </set>
+        <set name="taMensagems" table="ta_mensagem" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cod_prestador" not-null="true" />
+            </key>
+            <one-to-many class="model.TaMensagem" />
+        </set>
+    </class>
+</hibernate-mapping>
